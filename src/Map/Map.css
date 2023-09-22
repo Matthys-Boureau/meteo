@@ -1,0 +1,56 @@
+#map{
+  z-index: 0;
+  position: fixed;
+}
+
+.mapboxgl-marker:hover {
+  cursor: pointer;
+}
+
+.mapboxgl-popup-content{
+  border-radius: 10px;
+  padding: 8px;
+}
+
+.mapboxgl-popup-close-button{
+  font-size: 30px;
+}
+
+.popup-container h2{
+  font-family: "Poppins";
+  font-weight: 600;
+  margin: 0;
+  margin-right: auto;
+  padding-right: 20px;
+}
+
+.popup-container h4{
+  margin: 0;
+}
+
+.site-internet{
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.logo-internet{
+  display: flex;
+  justify-content: flex-end;
+  width: 20px;
+  height: 20px;
+  background-image: url(../Logo/globe-solid.svg);
+}
+
+.meteo-container{
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+.meteo-container h3, .meteo-container p{
+  margin: 0;
+}
+
+.mapboxgl-marker svg path{
+  fill: rgba(163, 60, 0, 0.9);
+}

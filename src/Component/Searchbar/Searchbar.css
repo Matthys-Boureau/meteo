@@ -1,0 +1,39 @@
+.searchbar {
+  position: fixed;
+  z-index: 3;
+  font-size: 16px;
+  top: 10px;
+  left: 10px;
+  width: 150px;
+  height: 27px;
+  border: none;
+  outline: none;
+  border-radius: 10rem;
+  padding: 8px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  font: "Poppins", 'sans-serif';
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.searchbar::placeholder {
+  opacity: .5;
+  padding-left: 3px;
+}
+
+ul{
+  z-index: 2;
+  padding: 4px;
+  text-decoration: none;
+  background-color: var(--couleur-fond);
+  border-radius: 10px;
+  position: absolute;
+  top: 60px;
+  left: 15px;
+}
+
+li{
+  list-style: none;
+}
