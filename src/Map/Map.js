@@ -9,7 +9,7 @@ mapboxgl.accessToken = "pk.eyJ1IjoibGVtYXQ1OSIsImEiOiJjbG1ybDhrdGYwOWN0MnFudGdwb
 
 const apiFestival = "https://data.culture.gouv.fr/api/explore/v2.1/catalog/datasets/festivals-global-festivals-_-pl/records?limit=100";
 
-function Map({setFestivals}) {
+function Map({setFestivals, setMarkers}) {
   const [viewport, setViewport] = useState({
     width: "100vw",
     height: "100vh",
@@ -23,7 +23,7 @@ function Map({setFestivals}) {
   useEffect(() => {
     mapRef.current = new mapboxgl.Map({
       container: "map",
-      style: "mapbox://styles/mapbox/streets-v12",
+      style: "mapbox://styles/mapbox/streets-v11",
       center: [viewport.longitude, viewport.latitude],
       zoom: viewport.zoom,
     });
@@ -47,7 +47,8 @@ function Map({setFestivals}) {
   }
   function addFestivalsToMap(AllFestivals) {
     if (!AllFestivals) return;
-    AllFestivals.forEach((festival) => {
+    const newMarkers = [];
+    AllFestivals.forEach((festival, index) => {
       const coordinates = {
         lng: festival.geocodage_xy.lon,
         lat: festival.geocodage_xy.lat,
@@ -96,16 +97,22 @@ function Map({setFestivals}) {
             </>
           );
 
-
           const popUpSetting = {
             className: "custom-popup"
           };
 
-          new mapboxgl.Marker()
+          const markerId = `marker-${index}`;
+          const marker = new mapboxgl.Marker()
             .setLngLat(coordinates)
             .addTo(mapRef.current)
             .setPopup(new mapboxgl.Popup(popUpSetting).setHTML(popUp_Info));
+
+            newMarkers.push({ id : markerId, marker });
+            marker.addTo(mapRef.current);
+          
         });
+
+        setMarkers(newMarkers);
     });
   }
 

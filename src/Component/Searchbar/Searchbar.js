@@ -1,10 +1,10 @@
 import "./Searchbar.css";
 import React, { useState } from "react";
 
-export default function Searchbar({ search }) {
+export default function Searchbar({ search, markers, onMarkerClick }) {
+
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-
 
   const handleSearch = (event) => {
     const { value } = event.target;
@@ -15,6 +15,26 @@ export default function Searchbar({ search }) {
       f.nom_du_festival.toLowerCase().includes(value.toLowerCase())
     );
     setSearchResults(filteredResults);
+  };
+
+  const handleListItemClick = (markerId) => {
+    console.log("Clic sur élément de la liste avec ID :", markerId);
+  
+    // Recherchez le marqueur correspondant par ID
+    const markerToOpen = markers.find((marker) => marker.id === markerId);
+
+    console.log("Markers in Searchbar.js:", markers);
+
+    if (onMarkerClick) {
+      onMarkerClick(markerId);
+    }
+  
+    if (markerToOpen) {
+      console.log("Ouverture de la popup pour le marqueur :", markerId);
+      markerToOpen.marker.togglePopup();
+    } else {
+      console.log("Aucun marqueur trouvé avec ID :", markerId);
+    }
   };
 
   return (
@@ -32,11 +52,21 @@ export default function Searchbar({ search }) {
           <ul>
             {searchTerm === " " ? (
               search.map((result) => (
-                <li key={result.id}>{result.nom_du_festival}</li>
+                <li
+                  key={result.id}
+                  onClick={() => handleListItemClick(result.id)}
+                >
+                  {result.nom_du_festival}
+                </li>
               ))
             ) : (
               searchResults.map((result) => (
-                <li key={result.id}>{result.nom_du_festival}</li>
+                <li
+                  key={result.id}
+                  onClick={() => handleListItemClick(result.id)}
+                >
+                  {result.nom_du_festival}
+                </li>
               ))
             )}
           </ul>

@@ -11,8 +11,7 @@ const intemperie = meteo.weather[0].main;
 
   return (
     <div className="meteo-container">
-      <h3>Météo actuel</h3>
-      <p>Température: {temperatureCelsius}°C, {intemperie}</p>
+      <h3>Météo actuel : {temperatureCelsius}°C , {intemperie}</h3>
     </div>
   );
 }

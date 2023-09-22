@@ -6,12 +6,18 @@ import React, { useState } from 'react';
 
 function App() {
   const [festivals, setFestivals] = useState([]);
+  const [markers, setMarkers] = useState([]);
 
+  const handleMarkerClick = (markerId) => {
+    // Vous pouvez mettre votre logique de gestion ici
+    console.log("Marker clicked:", markerId);
+  };
+  
   return (
     <div className="App">
-      <Map setFestivals={setFestivals}></Map>
+      <Map setFestivals={setFestivals} setMarkers={setMarkers}></Map>
       <Logo></Logo>
-      <Searchbar search={festivals}></Searchbar> {/* Passer festivals en tant que prop */}
+      <Searchbar search={festivals} markers={markers} onMarkerClick={handleMarkerClick}></Searchbar>
     </div>
   );
 }

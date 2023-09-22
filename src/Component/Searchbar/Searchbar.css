@@ -32,8 +32,14 @@ ul{
   position: absolute;
   top: 60px;
   left: 15px;
+  max-width: 250px;
+  height: 300px;
+  overflow-y: scroll;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 li{
   list-style: none;
+  cursor: pointer;
+  padding-bottom: 8px;
 }
