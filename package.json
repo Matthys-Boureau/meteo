@@ -2,7 +2,7 @@
   "name": "meteo",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Matthys-Boureau.github.io/meteo",
+  "homepage": "https://Matthys-Boureau.github.io/meteo/",
   "dependencies": {
     "@google-cloud/common": "^5.0.0",
     "@google-cloud/translate": "^8.0.2",
